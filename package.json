@@ -4,7 +4,10 @@
   "description": "React-component that fits given text into available width, shortening it by adding ellipsis in the middle.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "babel src/ -d lib/",
+    "prepublish": "npm run build",
+    "flow": "flow"
   },
   "keywords": [
     "React",
@@ -12,5 +15,10 @@
     "text"
   ],
   "author": "Evgeny Doroshenko",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.96.0"
+  }
 }
