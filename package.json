@@ -1,0 +1,16 @@
+{
+  "name": "react-shorten-text",
+  "version": "0.0.1",
+  "description": "React-component that fits given text into available width, shortening it by adding ellipsis in the middle.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "React",
+    "shorten",
+    "text"
+  ],
+  "author": "Evgeny Doroshenko",
+  "license": "MIT"
+}
