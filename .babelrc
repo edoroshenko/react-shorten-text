@@ -1,3 +1,4 @@
 {
-  "presets": ["@babel/preset-env", "@babel/preset-flow"]
+  "presets": ["env", "flow"],
+  "plugins": ["syntax-async-functions"]
 }
