@@ -7,7 +7,8 @@
     "test": "jest",
     "build": "babel src/ -d lib/",
     "prepublish": "npm run build",
-    "flow": "flow"
+    "flow": "flow",
+    "postinstall": "cd test-app && npm i"
   },
   "keywords": [
     "React",
@@ -25,9 +26,6 @@
     "jest": "^23.6.0",
     "jest-puppeteer": "^3.9.0",
     "puppeteer": "^1.14.0"
-  },
-  "jest": {
-    "preset": "jest-puppeteer"
   },
   "dependencies": {}
 }
