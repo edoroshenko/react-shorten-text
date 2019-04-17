@@ -1,6 +1,6 @@
 module.exports = {
   server: {
-    command: 'cd tests && BROWSER=none && npm start',
+    command: 'cd test-app && BROWSER=none && npm start',
     port: 3000,
   },
 }
