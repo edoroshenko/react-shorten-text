@@ -1,6 +1,6 @@
 describe('Google', () => {
   beforeAll(async () => {
-    await page.goto('http://localhost:3000/index.html');
+    await page.goto('http://localhost:3001/index.html');
   })
 
   it('should display "google" text on page', async () => {
