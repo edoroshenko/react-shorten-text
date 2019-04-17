@@ -1,16 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import ShortenText from '../../src/index'
+
 function TestApp() {
   return (
     <table>
       <tbody>
-        <tr><td>test value</td><td>test value</td><td>test value</td></tr>
-        <tr><td>test value</td><td>test value</td><td>test value</td></tr>
-        <tr><td>test value</td><td>test value</td><td>test value</td></tr>
-        <tr><td>test value</td><td>test value</td><td>test value</td></tr>
-        <tr><td>test value</td><td>test value</td><td>test value</td></tr>
-        <tr><td>test value</td><td>test value</td><td>test value</td></tr>
+        <tr>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+        </tr>
+        <tr>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+        </tr><tr>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+        </tr><tr>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+        </tr><tr>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+        </tr><tr>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+        </tr>
       </tbody>
     </table>
   )
