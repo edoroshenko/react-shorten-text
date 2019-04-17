@@ -1,38 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import './index.css'
+
 import ShortenText from './react-shorten-text/index'
+
+const superLongText = 'превысокомногорассмотрительствующий'
 
 function TestApp() {
   return (
-    <table>
+    <table className='table'>
       <tbody>
-        <tr>
-          <td><ShortenText>test value</ShortenText></td>
-          <td><ShortenText>test value</ShortenText></td>
-          <td><ShortenText>test value</ShortenText></td>
-        </tr>
-        <tr>
-          <td><ShortenText>test value</ShortenText></td>
-          <td><ShortenText>test value</ShortenText></td>
-          <td><ShortenText>test value</ShortenText></td>
-        </tr><tr>
-          <td><ShortenText>test value</ShortenText></td>
-          <td><ShortenText>test value</ShortenText></td>
-          <td><ShortenText>test value</ShortenText></td>
-        </tr><tr>
-          <td><ShortenText>test value</ShortenText></td>
-          <td><ShortenText>test value</ShortenText></td>
-          <td><ShortenText>test value</ShortenText></td>
-        </tr><tr>
-          <td><ShortenText>test value</ShortenText></td>
-          <td><ShortenText>test value</ShortenText></td>
-          <td><ShortenText>test value</ShortenText></td>
-        </tr><tr>
-          <td><ShortenText>test value</ShortenText></td>
-          <td><ShortenText>test value</ShortenText></td>
-          <td><ShortenText>test value</ShortenText></td>
-        </tr>
+        {''.padStart(200, ' ').split('').map((s, i) => (
+          <tr key={i}>
+            <td><ShortenText>{superLongText}</ShortenText></td>
+            <td><ShortenText>{superLongText}</ShortenText></td>
+            <td><ShortenText>{superLongText}</ShortenText></td>
+          </tr>
+        ))}
       </tbody>
     </table>
   )
