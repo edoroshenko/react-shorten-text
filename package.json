@@ -4,11 +4,11 @@
   "description": "React-component that fits given text into available width, shortening it by adding ellipsis in the middle.",
   "main": "lib/index.js",
   "scripts": {
+    "start": "react-scripts start",
     "test": "jest",
-    "build": "babel src/ -d lib/",
+    "build": "babel src/react-shorten-text/ -d lib/",
     "prepublish": "npm run build",
-    "flow": "flow",
-    "postinstall": "cd test-app && npm i"
+    "flow": "flow"
   },
   "keywords": [
     "React",
@@ -25,10 +25,18 @@
     "flow-bin": "^0.96.0",
     "jest": "^23.6.0",
     "jest-puppeteer": "^3.9.0",
-    "puppeteer": "^1.14.0"
+    "puppeteer": "^1.14.0",
+    "react-dom": "^16.8.6",
+    "react-scripts": "^2.1.8"
   },
   "dependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.8.6"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

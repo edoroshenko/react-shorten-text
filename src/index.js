@@ -1,10 +1,41 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
 
-export default function ReactShortenText() {
-  return this.props.children;
+import ShortenText from './react-shorten-text/index'
+
+function TestApp() {
+  return (
+    <table>
+      <tbody>
+        <tr>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+        </tr>
+        <tr>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+        </tr><tr>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+        </tr><tr>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+        </tr><tr>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+        </tr><tr>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+          <td><ShortenText>test value</ShortenText></td>
+        </tr>
+      </tbody>
+    </table>
+  )
 }
 
-ReactShortenText.propTypes = {
-  children: PropTypes.string
-}
+ReactDOM.render(<TestApp />, document.getElementById('root'));
