@@ -22,15 +22,32 @@ export default function shortenInnerText(parent: HTMLElement, tailLength: number
 
   let oldContent = initialContent;
   let oldContentLength = oldContent.length;
-  const tail = ELLIPSIS + oldContent.slice(oldContentLength - tailLength);
 
+  if (oldContentLength < minLength) {
+    return doNothing;
+  }
+
+  const tail = ELLIPSIS + oldContent.slice(oldContentLength - tailLength);
   const offsetWidth = parent.offsetWidth;
 
-  while(parent.scrollWidth > offsetWidth && oldContentLength > minLength) {
-    oldContent = child.textContent;
-    oldContentLength = oldContent.length;
+  if (parent.scrollWidth <= offsetWidth) {
+    return doNothing;
+  }
 
-    child.textContent = oldContent.slice(0, oldContentLength - minLength - 1) + tail;
+  let leftEdge = 0;
+  let rightEdge = oldContentLength - minLength;
+
+  // TODO: improve the condition
+  while(rightEdge - leftEdge > 1) {
+    let middle = Math.round((rightEdge + leftEdge) / 2);
+
+    child.textContent = oldContent.slice(0, middle) + tail;
+
+    if (parent.scrollWidth > offsetWidth) {
+      rightEdge = middle;
+    } else {
+      leftEdge = middle;
+    }
   }
 
   return () => child.textContent = initialContent;

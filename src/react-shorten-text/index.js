@@ -11,6 +11,7 @@ export default function ReactShortenText({ children, tailLength }: { children: s
   useLayoutEffect(() => {
     const restore = shortenInnerText(wrapperRef.current, tailLength);
     const onResizeCell = () => {
+      // TODO: try to decrease a number of resizes
       restore();
       shortenInnerText(wrapperRef.current, tailLength);
     };
