@@ -22,8 +22,9 @@ export default function shortenInnerText(parent: HTMLElement, tailLength: number
 
   let oldContent = initialContent
   const tail = ELLIPSIS + oldContent.slice(oldContent.length - tailLength)
+  const offsetWidth = parent.offsetWidth
 
-  while(parent.scrollWidth > parent.offsetWidth && oldContent.length > minLength) {
+  while(parent.scrollWidth > offsetWidth && oldContent.length > minLength) {
     oldContent = child.textContent
 
     child.textContent = oldContent.slice(0, oldContent.length - minLength - 1) + tail
