@@ -11,11 +11,10 @@ function TestApp() {
   return (
     <table className='table'>
       <tbody>
-        {''.padStart(200, ' ').split('').map((s, i) => (
+        {''.padStart(1000, ' ').split('').map((s, i) => (
           <tr key={i}>
-            <td><ShortenText>{superLongText}</ShortenText></td>
-            <td><ShortenText>{superLongText}</ShortenText></td>
-            <td><ShortenText>{superLongText}</ShortenText></td>
+            <td><ShortenText tailLength={5}>{superLongText}</ShortenText></td>
+            <td><ShortenText tailLength={5}>{superLongText}</ShortenText></td>
           </tr>
         ))}
       </tbody>
