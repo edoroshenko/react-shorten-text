@@ -19,7 +19,8 @@ const contentStyle = {
 const tailStyle = {
   position: 'absolute',
   right: '0',
-  top: '0'
+  top: '0',
+  display: 'none'
 };
 
 export default function ReactShortenText({ children, tailLength }: { children: string, tailLength: number }) {
@@ -28,11 +29,29 @@ export default function ReactShortenText({ children, tailLength }: { children: s
   const tailRef = useRef(null);
 
   useLayoutEffect(() => {
-    const content = contentRef.current;
-    const tail = tailRef.current;
-    const tailWidth = tail.offsetWidth;
+    function onResizeCell() {
+      const wrapper = wrapperRef.current;
+      const content = contentRef.current;
+      const tail = tailRef.current;
 
-    content.style.marginRight = `${tailWidth}px`;
+      if (wrapper.offsetWidth < content.scrollWidth) {
+        tail.style.display = 'block';
+        content.style.marginRight = `${tail.offsetWidth}px`;
+      } else if (tail.style.display === 'block') {
+        tail.style.display = 'none';
+        content.style.marginRight = '0px';
+      }
+    }
+
+    onResizeCell();
+
+    document.addEventListener('resize-cell', onResizeCell);
+    observer.observe(wrapperRef.current);
+
+    return () => {
+      document.removeEventListener('resize-cell', onResizeCell);
+      observer.unobserve(wrapperRef.current);
+    };
   });
 
   const tail = ELLIPSIS + children.slice(children.length - tailLength);
