@@ -11,12 +11,18 @@ function TestApp() {
   return (
     <table className='table'>
       <tbody>
-        {''.padStart(2000, ' ').split('').map((s, i) => (
-          <tr key={i}>
-            <td><ShortenText tailLength={5}>{superLongText}</ShortenText></td>
-            <td><ShortenText tailLength={5}>{superLongText}</ShortenText></td>
-          </tr>
-        ))}
+        {(() => {
+          const rows = [];
+
+          for (let i = 0; i < 2000; i++) {
+            rows.push(<tr key={i}>
+              <td><ShortenText tailLength={5}>{superLongText}</ShortenText></td>
+              <td><ShortenText tailLength={5}>{superLongText}</ShortenText></td>
+            </tr>);
+          }
+
+          return rows;
+        })()}
       </tbody>
     </table>
   )
