@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const wrapperStyle = {
@@ -20,16 +20,12 @@ const tailStyle = {
 };
 
 export default function ReactShortenText({ children, tailLength }) {
-  const wrapperRef = useRef(null);
-  const contentRef = useRef(null);
-  const tailRef = useRef(null);
-
   const content = children.slice(0, children.length - tailLength);
   const tail = children.slice(children.length - tailLength);
 
-  return <div ref={wrapperRef} style={wrapperStyle}>
-    <div ref={contentRef} style={contentStyle}>{content}</div>
-    <div ref={tailRef} style={tailStyle}>{tail}</div>
+  return <div style={wrapperStyle}>
+    <div style={contentStyle}>{content}</div>
+    <div style={tailStyle}>{tail}</div>
   </div>;
 }
 
