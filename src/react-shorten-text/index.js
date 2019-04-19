@@ -1,31 +1,46 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
-import shortenInnerText from './shorten-inner-text'
 
 const onResizeCell = () => document.dispatchEvent(new Event('resize-cell'));
 
 const observer = new ResizeObserver(onResizeCell);
 
+const ELLIPSIS = '...';
+
+const wrapperStyle = {
+  overflow: 'hidden',
+  position: 'relative'
+};
+
+const contentStyle = {
+  overflow: 'hidden'
+};
+
+const tailStyle = {
+  position: 'absolute',
+  right: '0',
+  top: '0'
+};
+
 export default function ReactShortenText({ children, tailLength }: { children: string, tailLength: number }) {
   const wrapperRef = useRef(null);
+  const contentRef = useRef(null);
+  const tailRef = useRef(null);
+
   useLayoutEffect(() => {
-    const restore = shortenInnerText(wrapperRef.current, tailLength);
-    const onResizeCell = () => {
-      // TODO: try to decrease a number of resizes
-      restore();
-      shortenInnerText(wrapperRef.current, tailLength);
-    };
+    const content = contentRef.current;
+    const tail = tailRef.current;
+    const tailWidth = tail.offsetWidth;
 
-    document.addEventListener('resize-cell', onResizeCell);
-    observer.observe(wrapperRef.current);
-
-    return () => {
-      document.removeEventListener('resize-cell', onResizeCell);
-      observer.unobserve(wrapperRef.current);
-    };
+    content.style.marginRight = `${tailWidth}px`;
   });
 
-  return <div ref={wrapperRef}>{children}</div>;
+  const tail = ELLIPSIS + children.slice(children.length - tailLength);
+
+  return <div ref={wrapperRef} style={wrapperStyle}>
+    <div ref={contentRef} style={contentStyle}>{children}</div>
+    <div ref={tailRef} style={tailStyle}>{tail}</div>
+  </div>;
 }
 
 ReactShortenText.propTypes = {

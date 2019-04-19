@@ -11,7 +11,7 @@ function TestApp() {
   return (
     <table className='table'>
       <tbody>
-        {''.padStart(1000, ' ').split('').map((s, i) => (
+        {''.padStart(2000, ' ').split('').map((s, i) => (
           <tr key={i}>
             <td><ShortenText tailLength={5}>{superLongText}</ShortenText></td>
             <td><ShortenText tailLength={5}>{superLongText}</ShortenText></td>
