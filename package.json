@@ -4,11 +4,9 @@
   "description": "React-component that fits given text into available width, shortening it by adding ellipsis in the middle.",
   "main": "lib/index.js",
   "scripts": {
-    "start": "react-scripts start",
     "test": "jest",
-    "build": "babel src/react-shorten-text/ -d lib/",
-    "prepublish": "npm run build",
-    "flow": "flow"
+    "build": "babel src/ -d lib/",
+    "prepublish": "npm run build"
   },
   "keywords": [
     "React",
@@ -18,25 +16,18 @@
   "author": "Evgeny Doroshenko",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-syntax-async-functions": "^6.13.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-flow": "^6.23.0",
-    "flow-bin": "^0.96.0",
-    "jest": "^23.6.0",
-    "jest-puppeteer": "^3.9.0",
-    "puppeteer": "^1.14.0",
-    "react-dom": "^16.8.6",
-    "react-scripts": "^2.1.8"
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "react-dom": "^16.8.6"
   },
   "dependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.8.6"
   },
   "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
+    "last 1 version",
+    "IE 11"
   ]
 }

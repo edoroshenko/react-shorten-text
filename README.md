@@ -1,1 +1,0 @@
-Unfortunately watch mode doesn't work so far: https://github.com/smooth-code/jest-puppeteer/issues/229

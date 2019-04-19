@@ -1,31 +1,43 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 
-import './index.css'
+const wrapperStyle = {
+  display: 'flex',
+  flexDirection: 'row',
+  overflow: 'hidden'
+};
 
-import ShortenText from './react-shorten-text/index'
+const contentStyle = {
+  flexGrow: '0',
+  flexShrink: '1',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis'
+};
 
-const superLongText = 'превысокомногорассмотрительствующий'
+const tailStyle = {
+  flexGrow: '1',
+  flexShrink: '0'
+};
 
-function TestApp() {
-  return (
-    <table className='table'>
-      <tbody>
-        {(() => {
-          const rows = [];
+export default function ReactShortenText({ children, tailLength }) {
+  const wrapperRef = useRef(null);
+  const contentRef = useRef(null);
+  const tailRef = useRef(null);
 
-          for (let i = 0; i < 2000; i++) {
-            rows.push(<tr key={i}>
-              <td><ShortenText tailLength={5}>{superLongText}</ShortenText></td>
-              <td><ShortenText tailLength={5}>{superLongText}</ShortenText></td>
-            </tr>);
-          }
+  const content = children.slice(0, children.length - tailLength);
+  const tail = children.slice(children.length - tailLength);
 
-          return rows;
-        })()}
-      </tbody>
-    </table>
-  )
+  return <div ref={wrapperRef} style={wrapperStyle}>
+    <div ref={contentRef} style={contentStyle}>{content}</div>
+    <div ref={tailRef} style={tailStyle}>{tail}</div>
+  </div>;
 }
 
-ReactDOM.render(<TestApp />, document.getElementById('root'));
+ReactShortenText.propTypes = {
+  children: PropTypes.string.isRequired,
+  tailLength: PropTypes.number
+};
+
+ReactShortenText.defaultProps = {
+  tailLength: 0
+};
