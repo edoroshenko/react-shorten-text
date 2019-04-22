@@ -19,11 +19,11 @@ const tailStyle = {
   flexShrink: '0'
 };
 
-export default function ReactShortenText({ children, tailLength }) {
+export default function ReactShortenText({ children, tailLength, className }) {
   const content = children.slice(0, children.length - tailLength);
   const tail = children.slice(children.length - tailLength);
 
-  return <div style={wrapperStyle}>
+  return <div style={wrapperStyle} className={className}>
     <div style={contentStyle}>{content}</div>
     <div style={tailStyle}>{tail}</div>
   </div>;
@@ -31,9 +31,10 @@ export default function ReactShortenText({ children, tailLength }) {
 
 ReactShortenText.propTypes = {
   children: PropTypes.string.isRequired,
-  tailLength: PropTypes.number
+  tailLength: PropTypes.number,
+  className: PropTypes.string,
 };
 
 ReactShortenText.defaultProps = {
-  tailLength: 0
+  tailLength: 0,
 };

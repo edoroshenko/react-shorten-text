@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "build": "babel src/index.js -d lib/",
+    "build:umd": "rollup -c",
     "prepublish": "npm run build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -24,10 +25,15 @@
     "@babel/preset-react": "^7.0.0",
     "@storybook/react": "^5.0.10",
     "babel-loader": "^8.0.5",
+    "cross-env": "^5.2.0",
     "jest": "^24.7.1",
     "jest-environment-puppeteer": "^4.1.1",
     "puppeteer": "^1.14.0",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "rollup": "^1.10.1",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-node-resolve": "^4.2.3"
   },
   "dependencies": {
     "prop-types": "^15.7.2",
