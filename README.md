@@ -1,8 +1,8 @@
-#ReactShortenText
+# ReactShortenText
 
 Thre component takes all available width and renders it's content shortened by adding ellipsis in the middle or in the end of the text.
 
-##Properties
+## Properties
 
 | Property     | Type                                                  | Required | Description                                                         |
 | -------------| ----------------------------------------------------- | ---------| --------------------------------------------------------------------|
@@ -13,16 +13,16 @@ Thre component takes all available width and renders it's content shortened by a
 
 Other HTML attributes could also be attached to the wrapper.
 
-##Browser support
+## Browser support
 The component has been tested in FireFox, Chrome, Safari and IE11
 
-##Performance
+## Performance
 The component has been tested with 4000 instances. The update time is kept within 500ms.
 
-##Dependencies
+## Dependencies
 The component requires `React` and `prop-types` as peer dependencies.
 
-##Development
+## Development
 To start storybook run
 ```sh
 npm start
