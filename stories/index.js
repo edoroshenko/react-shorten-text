@@ -36,7 +36,7 @@ storiesOf('ShortenText', module)
       {(() => {
         const rows = [];
 
-        for (let i = 0; i < 500; i++) {
+        for (let i = 0; i < 2000; i++) {
           rows.push(<tr key={i}>
             <td className="table-cell">
               <ShortenText tailLength={5} title={title}>{LONGEST_WORD}</ShortenText>
