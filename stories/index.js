@@ -9,9 +9,23 @@ import './index.css';
 const title = `Мы сократили слово "${LONGEST_WORD}", чтобы уместить его в заданную ширину`
 
 storiesOf('ShortenText', module)
-  .add('simple container with a padding', () => (
+  .add('with tail and title', () => (
     <div className="simple-container">
       <ShortenText tailLength={5} title={title}>
+        {LONGEST_WORD}
+      </ShortenText>
+    </div>
+  ))
+  .add('without tail', () => (
+    <div className="simple-container">
+      <ShortenText tailLength={0} title={title}>
+        {LONGEST_WORD}
+      </ShortenText>
+    </div>
+  ))
+  .add('without title', () => (
+    <div className="simple-container">
+      <ShortenText tailLength={5}>
         {LONGEST_WORD}
       </ShortenText>
     </div>
