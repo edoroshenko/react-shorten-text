@@ -4,7 +4,7 @@ export async function bootstrap() {
     './node_modules/react/umd/react.development.js',
     './node_modules/react-dom/umd/react-dom.development.js',
     './node_modules/prop-types/prop-types.js',
-    './lib/index.umd.js',
+    './build/index.umd.js',
   ];
   const stylesheets = [
     './stories/index.css'
