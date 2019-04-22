@@ -3,6 +3,7 @@ import { bootstrap } from './utils'
 import { LONGEST_WORD } from '../stories/constants'
 
 export function renderSimpleTestApp({ LONGEST_WORD }) {
+  // Can't use imports, because this code is being run on the puppeteer page
   const {render} = window.ReactDOM;
   const {createElement} = window.React;
   const ShortenText = window.ReactShortenText;
@@ -28,19 +29,34 @@ describe('ReactShortenText', function () {
 
     await page.evaluate(renderSimpleTestApp, { LONGEST_WORD });
 
-    const { wrapperWidth, childrenWidths} = await page.evaluate(() => {
+    const { wrapperRect, childRects } = await page.evaluate(() => {
       const wrapper = document.querySelector('.shorten-text');
-      const { width: wrapperWidth } = wrapper.getBoundingClientRect();
-      const childrenWidths = Array.from(wrapper.childNodes)
-        .map(node => node.getBoundingClientRect().width);
+      // Destructuring to prevent returning of DOMRect,
+      // which isn't being passed properly.
+      const { top, right, bottom, left, width } = wrapper.getBoundingClientRect();
 
       return {
-        wrapperWidth,
-        childrenWidths
-      }
+        wrapperRect: { top, right, bottom, left, width },
+        childRects: Array
+          .from(wrapper.childNodes)
+          .map(node => {
+            const { top, right, bottom, left, width } = node.getBoundingClientRect();
+
+            return { top, right, bottom, left, width };
+          })
+      };
     });
 
-    expect(wrapperWidth)
-      .toEqual(childrenWidths.reduce((result, width) => result + width, 0));
+    expect(childRects[0].top).toEqual(wrapperRect.top);
+    expect(childRects[0].right).toBeLessThan(wrapperRect.right);
+    expect(childRects[0].bottom).toEqual(wrapperRect.bottom);
+    expect(childRects[0].left).toEqual(wrapperRect.left);
+
+    expect(childRects[1].top).toEqual(wrapperRect.top);
+    expect(childRects[1].right).toEqual(wrapperRect.right);
+    expect(childRects[1].bottom).toEqual(wrapperRect.bottom);
+    expect(childRects[1].left).toBeGreaterThan(wrapperRect.left);
+
+    expect(wrapperRect.width).toEqual(childRects[0].width + childRects[1].width);
   })
 });

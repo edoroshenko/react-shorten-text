@@ -1,3 +1,7 @@
+/**
+ * Opens a page in the headless browser and returns a pointer on it
+ * @return {Promise<*>}
+ */
 export async function bootstrap() {
   const page = await global.browser.newPage();
   const scripts = [
