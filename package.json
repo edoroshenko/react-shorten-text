@@ -4,11 +4,10 @@
   "description": "React-component that fits given text into available width, shortening it by adding ellipsis in the middle.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "npm run build:umd && jest && rm -rf build",
+    "start": "start-storybook -p 6006",
+    "test": "rollup -c && jest && rm -rf build",
     "build": "babel src/index.js -d lib/",
-    "build:umd": "rollup -c",
     "prepublish": "npm run build",
-    "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "keywords": [
