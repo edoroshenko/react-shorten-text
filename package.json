@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "jest",
-    "build": "babel src/ -d lib/",
+    "build": "babel src/index.js -d lib/",
     "prepublish": "npm run build"
   },
   "keywords": [
@@ -20,6 +20,9 @@
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
+    "jest": "^24.7.1",
+    "jest-environment-puppeteer": "^4.1.1",
+    "puppeteer": "^1.14.0",
     "react-dom": "^16.8.6"
   },
   "dependencies": {
@@ -29,5 +32,10 @@
   "browserslist": [
     "last 1 version",
     "IE 11"
-  ]
+  ],
+  "jest": {
+    "globalSetup": "jest-environment-puppeteer/setup",
+    "globalTeardown": "jest-environment-puppeteer/teardown",
+    "testEnvironment": "jest-environment-puppeteer"
+  }
 }
