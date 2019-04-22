@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest",
     "build": "babel src/index.js -d lib/",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "keywords": [
     "React",
@@ -20,6 +22,8 @@
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/react": "^5.0.10",
+    "babel-loader": "^8.0.5",
     "jest": "^24.7.1",
     "jest-environment-puppeteer": "^4.1.1",
     "puppeteer": "^1.14.0",
