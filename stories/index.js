@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import ShortenText from '../src'
 import { LONGEST_WORD } from './constants'
 
+import '../src/index.css';
 import './index.css';
 
 const title = `Мы сократили слово "${LONGEST_WORD}", чтобы уместить его в заданную ширину`

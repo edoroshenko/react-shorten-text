@@ -11,6 +11,7 @@ export async function bootstrap() {
     './build/index.umd.js',
   ];
   const stylesheets = [
+    './src/index.css',
     './stories/index.css'
   ];
 

@@ -1,15 +1,19 @@
 import nodeResolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
-import copy from 'rollup-plugin-copy';
 
 export default {
   input: './src/index.js',
   output: {
-    file: 'lib/index.js',
-    format: 'cjs'
+    file: 'build/index.umd.js',
+    format: 'umd',
+    name: 'ReactShortenText',
+    globals: {
+      react: 'React',
+      'prop-types': 'PropTypes',
+    },
   },
-  external: ['react', 'prop-types'],
+  external: ['react', 'react-dom', 'prop-types'],
   plugins: [
     nodeResolve(),
     commonjs({
@@ -17,11 +21,6 @@ export default {
     }),
     babel({
       exclude: 'node_modules/**',
-    }),
-    copy({
-      targets: [
-        'src/index.css'
-      ]
     }),
   ],
 };

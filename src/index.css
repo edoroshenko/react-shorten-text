@@ -1,0 +1,31 @@
+.react-shorten-text {
+  position: relative;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+}
+
+.react-shorten-text__content {
+  color: transparent;
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.react-shorten-text:before {
+  display: block;
+  content: attr(data-head);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 0;
+  flex-shrink: 1;
+}
+
+.react-shorten-text:after {
+  display: block;
+  content: attr(data-tail);
+  flex-grow: 1;
+  flex-shrink: 0;
+}
