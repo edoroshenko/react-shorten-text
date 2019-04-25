@@ -1,11 +1,8 @@
 .react-shorten-text {
   position: relative;
-  white-space: nowrap;
-  display: flex;
-  flex-direction: row;
 }
 
-.react-shorten-text__content {
+.react-shorten-text__full-text {
   display: block;
   color: transparent;
   position: absolute;
@@ -16,16 +13,22 @@
   z-index: 10;
 }
 
-.react-shorten-text:before,
-.react-shorten-text:after {
+.react-shorten-text__short-text {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.react-shorten-text__short-text:before,
+.react-shorten-text__short-text:after {
+  display: block;
   position: relative;
   pointer-events: none;
   user-select: none;
   z-index: 5;
 }
 
-.react-shorten-text:before {
-  display: block;
+.react-shorten-text__short-text:before {
   content: attr(data-head);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -33,8 +36,7 @@
   flex-shrink: 1;
 }
 
-.react-shorten-text:after {
-  display: block;
+.react-shorten-text__short-text:after {
   content: attr(data-tail);
   flex-grow: 1;
   flex-shrink: 0;
@@ -47,8 +49,8 @@
  * The fix is to place the short text, that is always visible above the long one.
  */
 @-moz-document url-prefix() {
-  .react-shorten-text:before,
-  .react-shorten-text:after {
+  .react-shorten-text__short-text:before,
+  .react-shorten-text__short-text:after {
     z-index: 15;
   }
 }

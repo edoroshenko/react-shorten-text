@@ -5,13 +5,13 @@ export default function ReactShortenText({ children, tailLength, ...restHtmlAttr
   const head = children.slice(0, children.length - tailLength);
   const tail = children.slice(children.length - tailLength);
 
-  return <div
-    className="react-shorten-text"
-    data-head={head}
-    data-tail={tail}
-    {...restHtmlAttrs}
-  >
-    <div className="react-shorten-text__content">{children}</div>
+  return <div className="react-shorten-text" {...restHtmlAttrs}>
+    <div className="react-shorten-text__full-text">{children}</div>
+    <div
+      className="react-shorten-text__short-text"
+      data-head={head}
+      data-tail={tail}
+    />
   </div>;
 }
 
