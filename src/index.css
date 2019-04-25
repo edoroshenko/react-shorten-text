@@ -6,12 +6,22 @@
 }
 
 .react-shorten-text__content {
+  display: block;
   color: transparent;
   position: absolute;
   left: 0;
   right: 0;
   overflow: hidden;
   white-space: nowrap;
+  z-index: 10;
+}
+
+.react-shorten-text:before,
+.react-shorten-text:after {
+  position: relative;
+  pointer-events: none;
+  user-select: none;
+  z-index: 5;
 }
 
 .react-shorten-text:before {
@@ -28,4 +38,17 @@
   content: attr(data-tail);
   flex-grow: 1;
   flex-shrink: 0;
+}
+
+/**
+ * The following rule swaps positions of the long text and pseudo-elements in FireFox to make on-page search highlighting work.
+ * The difference is that unlike other browsers, FireFox doesn't reset the color of a highlighted search result to default
+ * and in current case applies `transparent`, which makes it invisible.
+ * The fix is to place the short text, that is always visible above the long one.
+ */
+@-moz-document url-prefix() {
+  .react-shorten-text:before,
+  .react-shorten-text:after {
+    z-index: 15;
+  }
 }
